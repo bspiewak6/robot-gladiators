@@ -3,6 +3,7 @@
 //      * Fight all enemy robots
 //      * Defeat each enemy robot
 // "LOSE" - Player robot's health is zero or less 
+//      * if(enemyHealth <==0)
 
 var playerName = window.prompt("What is your robot's name?");
 var playerHealth = 100;
@@ -14,6 +15,9 @@ console.log(playerName, playerAttack, playerHealth);
 
 var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 console.log(enemyNames);
+console.log(enemyNames[0]);
+console.log(enemyNames[1]);
+console.log(enemyNames[2]); 
 
 var enemyHealth = 50;
 var enemyAttack = 12;
