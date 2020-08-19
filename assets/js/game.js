@@ -27,30 +27,30 @@ var enemyAttack = 12;
 // }
 
 
-
 var fight = function(enemyName) {
-    while(enemyHealth > 0 && playerHealth > 0) {
+    while (playerHealth > 0 && enemyHealth > 0) {
         // ask user if they'd like to fight or run
         var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
         
-         // if user picks "skip" confirm and then stop the loop
-         if (promptFight === "skip" || promptFight === "SKIP") {
+        // if user picks "skip" confirm and then stop the loop
+        if (promptFight === "skip" || promptFight === "SKIP") {
             // confirm user wants to skip
             var confirmSkip = window.confirm("Are you sure you'd like to quit?");
 
-        // if yes (true), leave fight  
-        if (confirmSkip) { 
-            window.alert(playerName + " has decided to skip the fight. Goodbye!");
-            // subtract money from playerMoney for skipping
-            playerMoney = playerMoney - 10;
-            console.log("playerMoney", playerMoney);
-            break;
+            // if yes (true), leave fight  
+            if (confirmSkip) { 
+                window.alert(playerName + " has decided to skip the fight. Goodbye!");
+                // subtract money from playerMoney for skipping
+                playerMoney = playerMoney - 10;
+                console.log("playerMoney", playerMoney);
+                break;
+            }
         }
-    }
-       // remove enemy's health by subtracting the amount set in the playerAttack variable
+
+        // remove enemy's health by subtracting the amount set in the playerAttack variable
         enemyHealth = enemyHealth - playerAttack;
         console.log(
-        playerName + ' attacked ' + enemyName + '. ' + enemyName + ' now has ' + enemyHealth + ' health remaining.'
+            playerName + ' attacked ' + enemyName + '. ' + enemyName + ' now has ' + enemyHealth + ' health remaining.'
         );
 
         // check enemy's health
