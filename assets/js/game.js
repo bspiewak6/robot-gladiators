@@ -69,10 +69,10 @@ var fight = function(enemy) {
 var startGame = function() {
     for(var i = 0; i < enemyInfo.length; i++) {
     // reset player stats
-    playerInfo.health = 100;
-    playerInfo.attack = 10;
-    playerInfo.money = 10;
-
+    // playerInfo.health = 100;
+    // playerInfo.attack = 10;
+    // playerInfo.money = 10;
+        playerInfo.reset();
   
     if (playerInfo.health > 0) {
         // let user know what round they are in, remember that arrays start at 0 so it needs to have 1 added to it
@@ -146,31 +146,11 @@ var shop = function() {
 switch (shopOptionPrompt) {
     case "REFILL": // new case
     case "refill":
-        if (playerMoney >= 7) {
-            window.alert("Refilling player's health by 20 for 7 dollars.");
-        
-            //increase health and decrease money
-            playerInfo.health = playerInfo.health + 20;
-            playerInfo.money = playerInfo.money - 7;
-        }
-        else {
-            window.alert("You don't have enough money!");
-        }
-
+        playerInfo.refillHealth();
         break;
     case "UPGRADE": // new case
     case "upgrade":
-        if (playerInfo.money >= 7) {
-            window.alert("Upgrading player's attack by 6 for 7 dollars.");
-
-            // increase attack and decrease money
-            playerInfo.attack = playerInfo.attack + 6;
-            playerInfo.money = playerInfo.money - 7;
-        }
-        else {
-            window.alert("You don't have enough money!");
-        }
-
+        playerInfo.upgradeAttack();
         break;
     case "LEAVE": // new case
     case "leave":
@@ -197,7 +177,32 @@ var playerInfo = {
     name: window.prompt("What is your robot's name?"),
     health: 100,
     attack: 10,
-    money: 10
+    money: 10,
+    reset: function() {
+        this.health = 100;
+        this.attack = 10;
+        this.money = 10;
+    }, // comma!
+    refillHealth: function() {
+        if (this.money >= 7) {
+            window.alert("Refilling player's health by 20 for 7 dollars."); 
+            this.health += 20;
+            this.money -=7;
+        }
+        else {
+            window.alert("You don't have enough money!");
+        }
+    },
+    upgradeAttack: function() {
+        if (this.money >= 7) {
+            window.alert("Upgrading player's attack by 6 for 7 dollar.");
+            this.attack += 6;
+            this.money -= 7;
+        }
+        else {
+            window.alert("You don't have enough money!");
+        }
+    }
 };
 
 
@@ -205,6 +210,10 @@ var enemyInfo = [
     {
         name: "Roborto", // can be accessed as enemyName[0] and to access name enemyName[0].name
         attack: randomNumber(10, 14)
+        // shield: {
+        //     type: "wood",
+        //     strength: 10
+        // }
     },
     {
         name: "Amy Android",
