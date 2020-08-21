@@ -142,8 +142,8 @@ var shop = function() {
     );
     console.log("entered the shop");
 
-// use switch to carry out action
-switch (shopOptionPrompt) {
+    // use switch to carry out action
+    switch (shopOptionPrompt) {
     case "REFILL": // new case
     case "refill":
         playerInfo.refillHealth();
@@ -167,14 +167,27 @@ switch (shopOptionPrompt) {
     }
 };
 
+// function to set name
+var getPlayerName = function() {
+    var name = "";
+
+    while (name === "" || name === null) {
+        name = prompt("What is your robot's name?");
+    }
+    console.log("Your robot's name is " + name);
+    return name;
+};
+    
+
 var randomNumber = function(min, max) {
     var value = Math.floor(Math.random() * (max - min + 1) + min);
 
     return value;
 };
 
+/* GAME INFORMATION / VARIABLES */
 var playerInfo = {
-    name: window.prompt("What is your robot's name?"),
+    name: getPlayerName(),
     health: 100,
     attack: 10,
     money: 10,
