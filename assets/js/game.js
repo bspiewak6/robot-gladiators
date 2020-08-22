@@ -177,30 +177,26 @@ var shop = function() {
     );
     console.log("entered the shop");
 
+    // convert from prompt to actual number
+    shopOptionPrompt = parseInt(shopOptionPrompt);
+
     // use switch to carry out action
     switch (shopOptionPrompt) {
-    case "REFILL": // new case
-    case "refill":
-        playerInfo.refillHealth();
-        break;
-    case "UPGRADE": // new case
-    case "upgrade":
-        playerInfo.upgradeAttack();
-        break;
-    case "LEAVE": // new case
-    case "leave":
-        window.alert("Leaving the store.");
-
-        // do nothing, so function will end
-        break;
-    default:
-        window.alert("You did not pick a valid option. Try again.");
-        
-        // call shop() again to force player to pick a valid option
-        shop();
-        break;
-    }
-};
+        case 1:
+            playerInfo.refillHealth();
+            break;
+        case 2:
+            playerInfo.upgradeAttack();
+            break;
+        case 3: 
+            window.alert("Leaving the store.");
+            break;
+        default:
+            window.alert("You did not pick a valid option. Try again.");
+            shop();
+            break;
+        }
+    };
 
 // function to set name
 var getPlayerName = function() {
